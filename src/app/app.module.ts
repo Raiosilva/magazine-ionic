@@ -1,5 +1,6 @@
+import { AuthService } from './../services/auth.service';
 import { ErrorInterceptorProvider } from './../interceptor/error-interceptor';
-import { CategorieService } from './../services/categorie.service';
+import { CategorieService } from '../services/domain/categorie.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
@@ -9,6 +10,7 @@ import { MyApp } from './app.component';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+import { StorageService } from '../services/storage.service';
 
 @NgModule({
   declarations: [
@@ -28,6 +30,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     CategorieService,
+    AuthService,
+    StorageService,
     ErrorInterceptorProvider
   ]
 })

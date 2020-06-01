@@ -1,6 +1,6 @@
 import { API_CONFIG } from './../../config/api.config';
 import { CategorieDTO } from './../../models/categorie.dto';
-import { CategorieService } from './../../services/categorie.service';
+import { CategorieService } from '../../services/domain/categorie.service';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
