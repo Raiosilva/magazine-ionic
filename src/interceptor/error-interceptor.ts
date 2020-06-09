@@ -1,3 +1,4 @@
+import { StorageService } from './../services/storage.service';
 import { Observable } from 'rxjs/Rx';
 import { Injectable } from "@angular/core";
 import { HttpInterceptor, HttpRequest, HttpHandler, HttpEvent, HTTP_INTERCEPTORS } from "@angular/common/http"
@@ -5,8 +6,9 @@ import { HttpInterceptor, HttpRequest, HttpHandler, HttpEvent, HTTP_INTERCEPTORS
 @Injectable()
 export class ErrorInterceptor implements HttpInterceptor {
 
+  constructor(private storage: StorageService) {}
+
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    console.log('passou intercptor')
     return next.handle(req).catch((error, caught) => {
 
       let errorObj = error;
@@ -21,8 +23,18 @@ export class ErrorInterceptor implements HttpInterceptor {
       console.log("Error detectado pelo interceptor");
       console.log(errorObj);
 
+      switch(errorObj.status) {
+        case 403:
+          this.handle403();
+          break;
+      }
+
       return Observable.throw(error);
     }) as any;
+  }
+
+  handle403() {
+    this.storage.setLocalUser(null);
   }
 }
 
