@@ -1,3 +1,4 @@
+import { ProductService } from './../services/domain/product.service';
 import { AuthInterceptorProvider } from './../interceptor/auth-interceptor';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
@@ -38,6 +39,7 @@ import { StorageService } from '../services/storage.service';
     AuthService,
     StorageService,
     ClientService,
+    ProductService,
   ]
 })
 export class AppModule {}

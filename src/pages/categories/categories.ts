@@ -1,15 +1,10 @@
-import { API_CONFIG } from './../../config/api.config';
-import { CategorieDTO } from './../../models/categorie.dto';
-import { CategorieService } from '../../services/domain/categorie.service';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
-/**
- * Generated class for the CategoriesPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+import { CategorieDTO } from './../../models/categorie.dto';
+import { CategorieService } from '../../services/domain/categorie.service';
+
+import { API_CONFIG } from './../../config/api.config';
 
 @IonicPage()
 @Component({
@@ -37,8 +32,8 @@ export class CategoriesPage {
     });
   }
 
-  showProducts() {
-    this.navCtrl.push('ProductsPage');
+  showProducts(categoria_id: string) {
+    this.navCtrl.push('ProductsPage', {categoria_id: categoria_id});
   }
 
 }
