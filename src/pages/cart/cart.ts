@@ -1,3 +1,4 @@
+import { ProductDTO } from './../../models/product.dto';
 import { ProductService } from './../../services/domain/product.service';
 import { CartItem } from './../../models/cart-item';
 import { Component } from '@angular/core';
@@ -40,4 +41,23 @@ export class CartPage {
     }
   }
 
+  removeItem(produto: ProductDTO) {
+    this.items = this.cartService.removeProduto(produto).items;
+  }
+
+  increaseQuantity(produto: ProductDTO) {
+    this.items = this.cartService.increaseQuantity(produto).items;
+  }
+
+  decreaseQuantity(produto: ProductDTO) {
+    this.items = this.cartService.decreaseQuantity(produto).items;
+  }
+
+  total(): number {
+    return this.cartService.total();
+  }
+
+  goOn() {
+    this.navCtrl.setRoot('CategoriesPage');
+  }
 }

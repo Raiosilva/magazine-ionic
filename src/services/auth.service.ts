@@ -1,3 +1,4 @@
+import { CartService } from './domain/cart.service';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from "@angular/core";
 
@@ -15,7 +16,8 @@ export class AuthService {
 
   constructor(
     public http: HttpClient,
-    public storageService: StorageService
+    public storageService: StorageService,
+    public cartService: CartService
     ) {}
 
   authenticate(creds: CredentialsDTO) {
@@ -47,6 +49,7 @@ export class AuthService {
       email: this.jwtHelper.decodeToken(tok).sub
     };
     this.storageService.setLocalUser(user);
+    this.cartService.createOrClearCart();
   }
 
   logout() {
