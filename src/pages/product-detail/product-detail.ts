@@ -1,3 +1,4 @@
+import { CartService } from './../../services/domain/cart.service';
 import { ProductService } from './../../services/domain/product.service';
 import { ProductDTO } from './../../models/product.dto';
 import { Component } from '@angular/core';
@@ -16,7 +17,8 @@ export class ProductDetailPage {
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
-    public productService: ProductService
+    public productService: ProductService,
+    public cartService: CartService
     ) {
   }
 
@@ -38,5 +40,10 @@ export class ProductDetailPage {
     error => {
 
     });
+  }
+
+  addToCart(produto: ProductDTO) {
+    this.cartService.addProduto(produto);
+    this.navCtrl.setRoot('CartPage');
   }
 }

@@ -1,3 +1,4 @@
+import { CartService } from './../services/domain/cart.service';
 import { ProductService } from './../services/domain/product.service';
 import { AuthInterceptorProvider } from './../interceptor/auth-interceptor';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
@@ -40,6 +41,7 @@ import { StorageService } from '../services/storage.service';
     StorageService,
     ClientService,
     ProductService,
+    CartService,
   ]
 })
 export class AppModule {}
